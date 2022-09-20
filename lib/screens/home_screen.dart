@@ -5,8 +5,10 @@ import 'package:atividade_ativa/models/content_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import '../components/custom_tab_bar.dart';
+import 'home_content.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -25,13 +27,7 @@ class _HomeScreenState extends State<HomeScreen>
   List<ContentView> contentViews = [
     ContentView(
       tab: const CustomTab(title: "Home"),
-      content: Center(
-        child: Container(
-          color: Colors.green,
-          width: 100,
-          height: 100,
-        ),
-      ),
+      content: const HomeContent(),
     ),
     ContentView(
       tab: const CustomTab(title: "About"),
@@ -68,7 +64,7 @@ class _HomeScreenState extends State<HomeScreen>
     return Scaffold(
       endDrawer: drawer(),
       key: key,
-      backgroundColor: const Color(0xff1e1e24),
+      backgroundColor: Colors.white,
       body: LayoutBuilder(
         builder: (context, constraints) {
           if (constraints.maxWidth > 715) {
@@ -92,9 +88,9 @@ class _HomeScreenState extends State<HomeScreen>
           children: [
             Container(
               padding: const EdgeInsets.fromLTRB(16, 16, 16, 16),
-              child: const Text(
+              child: Text(
                 "SeuCondominio",
-                style: TextStyle(color: Colors.white, fontSize: 24),
+                style: GoogleFonts.lobster(fontSize: 32),
               ),
             ),
             CustomTabBar(
@@ -104,7 +100,7 @@ class _HomeScreenState extends State<HomeScreen>
           ],
         ),
         SizedBox(
-          height: screenHeigh * 0.85,
+          height: screenHeigh * 0.926,
           child: TabBarView(
             controller: tabController,
             children: contentViews.map((e) => e.content).toList(),
@@ -127,7 +123,7 @@ class _HomeScreenState extends State<HomeScreen>
             IconButton(
               iconSize: screenWidth * 0.05,
               icon: const Icon(Icons.menu_rounded),
-              color: Colors.white,
+              color: Colors.black,
               onPressed: () => key.currentState?.openEndDrawer(),
             )
           ],

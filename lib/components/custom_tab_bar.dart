@@ -23,6 +23,7 @@ class CustomTabBar extends StatelessWidget {
       width: widthScreen * tabBarScalling,
       child: Theme(
         data: ThemeData(
+          primarySwatch: Colors.orange,
           highlightColor: Colors.transparent,
           splashColor: Colors.transparent,
           hoverColor: Colors.transparent,

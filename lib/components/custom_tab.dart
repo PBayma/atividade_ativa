@@ -12,7 +12,7 @@ class CustomTab extends StatelessWidget {
     return Tab(
       child: Text(
         title,
-        style: const TextStyle(fontSize: 17),
+        style: const TextStyle(fontSize: 17, color: Colors.black),
       ),
     );
   }
