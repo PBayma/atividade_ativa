@@ -21,6 +21,7 @@ class _HomeScreenState extends State<HomeScreen>
     with SingleTickerProviderStateMixin {
   late double screenHeigh;
   late double screenWidth;
+  late double paddingHeaderContent;
   late TabController tabController;
   final key = GlobalKey<ScaffoldState>();
 
@@ -61,6 +62,8 @@ class _HomeScreenState extends State<HomeScreen>
   Widget build(BuildContext context) {
     screenHeigh = MediaQuery.of(context).size.height;
     screenWidth = MediaQuery.of(context).size.width;
+    paddingHeaderContent = MediaQuery.of(context).size.width > 1440 ? 100 : 0;
+
     return Scaffold(
       endDrawer: drawer(),
       key: key,
@@ -82,25 +85,28 @@ class _HomeScreenState extends State<HomeScreen>
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.end,
       children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Container(
-              padding: const EdgeInsets.fromLTRB(16, 16, 16, 16),
-              child: Text(
-                "SeuCondominio",
-                style: GoogleFonts.lobster(fontSize: 32),
+        Padding(
+          padding: EdgeInsets.fromLTRB(
+              paddingHeaderContent, 0, paddingHeaderContent, 0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Container(
+                padding: const EdgeInsets.fromLTRB(16, 16, 16, 16),
+                child: Text(
+                  "SeuCondominio",
+                  style: GoogleFonts.lobster(fontSize: 32),
+                ),
               ),
-            ),
-            CustomTabBar(
-              tabController: tabController,
-              tabs: contentViews.map((e) => e.tab).toList(),
-            ),
-          ],
+              CustomTabBar(
+                tabController: tabController,
+                tabs: contentViews.map((e) => e.tab).toList(),
+              ),
+            ],
+          ),
         ),
-        SizedBox(
-          height: screenHeigh * 0.926,
+        Flexible(
           child: TabBarView(
             controller: tabController,
             children: contentViews.map((e) => e.content).toList(),

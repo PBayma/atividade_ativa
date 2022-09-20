@@ -11,6 +11,9 @@ class HomeContent extends StatelessWidget {
     final double descriptionFontSize =
         MediaQuery.of(context).size.width > 1250 ? 24 : 16;
 
+    final double paddingBodyContent =
+        MediaQuery.of(context).size.width > 1440 ? 100 : 0;
+
     const buildingImage =
         Image(image: AssetImage("assets\\images\\building.png"));
 
@@ -19,7 +22,9 @@ class HomeContent extends StatelessWidget {
 
     return ListView(
       children: [
-        SizedBox(
+        Container(
+          padding:
+              EdgeInsets.fromLTRB(paddingBodyContent, 0, paddingBodyContent, 0),
           height: MediaQuery.of(context).size.height,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
