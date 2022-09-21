@@ -2,13 +2,15 @@ import 'dart:js';
 
 import 'package:atividade_ativa/components/custom_tab.dart';
 import 'package:atividade_ativa/models/content_view.dart';
+import 'package:atividade_ativa/screens/components/about_content.dart';
+import 'package:atividade_ativa/screens/components/project_content.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../components/custom_tab_bar.dart';
-import 'home_content.dart';
+import 'components/home_content.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -31,24 +33,12 @@ class _HomeScreenState extends State<HomeScreen>
       content: const HomeContent(),
     ),
     ContentView(
-      tab: const CustomTab(title: "About"),
-      content: Center(
-        child: Container(
-          color: Colors.blue,
-          width: 100,
-          height: 100,
-        ),
-      ),
+      tab: const CustomTab(title: "Sobre"),
+      content: const AboutContent(),
     ),
     ContentView(
-      tab: const CustomTab(title: "Projects"),
-      content: Center(
-        child: Container(
-          color: Colors.yellow,
-          width: 100,
-          height: 100,
-        ),
-      ),
+      tab: const CustomTab(title: "Projeto"),
+      content: const ProjectContent(),
     )
   ];
 
