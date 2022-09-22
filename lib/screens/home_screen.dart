@@ -1,7 +1,9 @@
 import 'package:atividade_ativa/components/custom_tab.dart';
 import 'package:atividade_ativa/models/content_view.dart';
 import 'package:atividade_ativa/screens/components/about_content.dart';
+import 'package:atividade_ativa/screens/components/about_mobile_content.dart';
 import 'package:atividade_ativa/screens/components/project_content.dart';
+import 'package:atividade_ativa/screens/components/project_mobile_content.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -155,18 +157,12 @@ class _HomeScreenState extends State<HomeScreen>
                         break;
                       case "Sobre":
                         setState(() {
-                          mobileBody = Container(
-                            padding: const EdgeInsets.all(8),
-                            color: Colors.black,
-                          );
+                          mobileBody = const AboutMobileContent();
                         });
                         break;
                       case "Projeto":
                         setState(() {
-                          mobileBody = Container(
-                            padding: const EdgeInsets.all(8),
-                            color: Colors.yellow,
-                          );
+                          mobileBody = ProjectMobileContent();
                         });
                         break;
                       default:
