@@ -12,7 +12,6 @@ class CustomTabBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    //TODO: TALVEZ ESTEJA ERRADO USANDO FINAL
     final widthScreen = MediaQuery.of(context).size.width;
     final tabBarScalling = widthScreen > 1400
         ? 0.21

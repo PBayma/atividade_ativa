@@ -1,12 +1,8 @@
-import 'dart:js';
-
 import 'package:atividade_ativa/components/custom_tab.dart';
 import 'package:atividade_ativa/models/content_view.dart';
 import 'package:atividade_ativa/screens/components/about_content.dart';
 import 'package:atividade_ativa/screens/components/project_content.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../components/custom_tab_bar.dart';
@@ -132,11 +128,9 @@ class _HomeScreenState extends State<HomeScreen>
     return Drawer(
       child: ListView(
         children: contentViews
-            .map((e) => Container(
-                  child: ListTile(
-                    title: Text(e.tab.title),
-                    onTap: () {},
-                  ),
+            .map((e) => ListTile(
+                  title: Text(e.tab.title),
+                  onTap: () {},
                 ))
             .toList(),
       ),

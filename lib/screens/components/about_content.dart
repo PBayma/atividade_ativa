@@ -39,7 +39,7 @@ class AboutContent extends StatelessWidget {
                     'Sobre nós',
                     style: GoogleFonts.lobster(fontSize: titleFontSize),
                   ),
-                  SizedBox(height: 48),
+                  const SizedBox(height: 48),
                   Text(
                     aboutUsDescription,
                     style: TextStyle(fontSize: descriptionFontSize),

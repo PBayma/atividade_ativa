@@ -57,7 +57,7 @@ class HomeContent extends StatelessWidget {
                         'Administradora digital do seu condomínio',
                         style: GoogleFonts.lobster(fontSize: titleFontSize),
                       ),
-                      SizedBox(height: 48),
+                      const SizedBox(height: 48),
                       Text(
                         condominiumDescription,
                         style: TextStyle(fontSize: descriptionFontSize),
@@ -100,7 +100,7 @@ class HomeContent extends StatelessWidget {
                     ),
                     const SizedBox(height: 56),
                     const Flexible(
-                      child: const Text(
+                      child: Text(
                         "Contatos: 61-996360014",
                         style: TextStyle(
                           color: Colors.white,
