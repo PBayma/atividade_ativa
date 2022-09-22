@@ -7,6 +7,7 @@ import 'package:google_fonts/google_fonts.dart';
 
 import '../components/custom_tab_bar.dart';
 import 'components/home_content.dart';
+import 'components/home_mobile_content.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -22,6 +23,7 @@ class _HomeScreenState extends State<HomeScreen>
   late double paddingHeaderContent;
   late TabController tabController;
   final key = GlobalKey<ScaffoldState>();
+  late Widget mobileBody;
 
   List<ContentView> contentViews = [
     ContentView(
@@ -42,6 +44,7 @@ class _HomeScreenState extends State<HomeScreen>
   void initState() {
     super.initState();
     tabController = TabController(length: contentViews.length, vsync: this);
+    mobileBody = const HomeMobileContent();
   }
 
   @override
@@ -103,23 +106,36 @@ class _HomeScreenState extends State<HomeScreen>
   }
 
   Widget mobileView() {
-    return Padding(
-      padding:
-          EdgeInsets.only(left: screenWidth * 0.05, right: screenWidth * 0.05),
-      child: SizedBox(
-        width: screenWidth,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.end,
-          children: [
-            IconButton(
-              iconSize: screenWidth * 0.05,
-              icon: const Icon(Icons.menu_rounded),
-              color: Colors.black,
-              onPressed: () => key.currentState?.openEndDrawer(),
-            )
-          ],
-        ),
+    return SizedBox(
+      width: screenWidth,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.end,
+        children: [
+          Padding(
+            padding: EdgeInsets.only(
+                left: screenWidth * 0.05, right: screenWidth * 0.05),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  "SeuCondominium",
+                  style: GoogleFonts.lobster(
+                    fontSize: 24,
+                  ),
+                ),
+                IconButton(
+                  iconSize: screenWidth * 0.05,
+                  icon: const Icon(Icons.menu_rounded),
+                  color: Colors.black,
+                  onPressed: () => key.currentState?.openEndDrawer(),
+                ),
+              ],
+            ),
+          ),
+          const SizedBox(height: 16),
+          Flexible(child: mobileBody),
+        ],
       ),
     );
   }
@@ -130,7 +146,36 @@ class _HomeScreenState extends State<HomeScreen>
         children: contentViews
             .map((e) => ListTile(
                   title: Text(e.tab.title),
-                  onTap: () {},
+                  onTap: () {
+                    switch (e.tab.title) {
+                      case "Home":
+                        setState(() {
+                          mobileBody = const HomeMobileContent();
+                        });
+                        break;
+                      case "Sobre":
+                        setState(() {
+                          mobileBody = Container(
+                            padding: const EdgeInsets.all(8),
+                            color: Colors.black,
+                          );
+                        });
+                        break;
+                      case "Projeto":
+                        setState(() {
+                          mobileBody = Container(
+                            padding: const EdgeInsets.all(8),
+                            color: Colors.yellow,
+                          );
+                        });
+                        break;
+                      default:
+                        setState(() {
+                          mobileBody = const HomeMobileContent();
+                        });
+                        break;
+                    }
+                  },
                 ))
             .toList(),
       ),
