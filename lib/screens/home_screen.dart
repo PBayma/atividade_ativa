@@ -86,7 +86,7 @@ class _HomeScreenState extends State<HomeScreen>
               Container(
                 padding: const EdgeInsets.fromLTRB(16, 16, 16, 16),
                 child: Text(
-                  "SeuCondominio",
+                  "SeuCondominium",
                   style: GoogleFonts.lobster(fontSize: 32),
                 ),
               ),
